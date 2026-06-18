@@ -1,0 +1,750 @@
+/* ============================================================
+   Rajvi Dave — Portfolio
+   Swiss / International Typographic Style
+   Palette: off-white, near-black, single muted blush accent
+   ============================================================ */
+
+:root {
+    --paper: #FAFAF8;
+    --blush: #F7E9EB;       /* very light pink panel tint */
+    --blush-line: #E7C9CE;  /* slightly deeper pink for hairlines on blush */
+    --rose: #B5707D;        /* muted dusty rose accent — used sparingly */
+    --ink: #121212;
+    --ink-soft: #4A4A4A;
+    --ink-faint: #717171;
+    --rule: #DEDAD3;
+    --rule-strong: #121212;
+
+    --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'IBM Plex Mono', 'SF Mono', Consolas, monospace;
+
+    --rail-width: 220px;
+    --max-text: 720px;
+
+    color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+
+p { margin: 0; }
+
+ul { margin: 0; padding: 0; list-style: none; }
+
+img { max-width: 100%; display: block; }
+
+::selection {
+    background: var(--rose);
+    color: var(--paper);
+}
+
+:focus-visible {
+    outline: 2px solid var(--rose);
+    outline-offset: 3px;
+}
+
+/* ============================================================
+   Layout shell
+   ============================================================ */
+
+main {
+    margin-left: var(--rail-width);
+    max-width: 980px;
+    padding: 0 64px;
+}
+
+.block {
+    padding: 88px 0 80px;
+}
+
+.hero-block {
+    padding-top: 96px;
+}
+
+.rule {
+    border: none;
+    height: 1px;
+    background: var(--rule);
+    margin: 0;
+    margin-left: 0;
+    width: 100%;
+}
+
+.eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin: 0 0 22px;
+}
+
+.block-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+/* ============================================================
+   Left index rail (desktop nav)
+   ============================================================ */
+
+.rail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: var(--rail-width);
+    border-right: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 0 32px;
+    z-index: 50;
+    background: var(--paper);
+}
+
+.rail-top {
+    padding: 0 36px;
+}
+
+.mark {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    border: 1px solid var(--ink);
+    padding: 6px 10px;
+    display: inline-block;
+}
+
+.rail-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 16px;
+}
+
+.rail-nav a {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 9px 20px;
+    font-size: 14px;
+    color: var(--ink-soft);
+    transition: color 0.15s ease, background-color 0.15s ease;
+    border-radius: 2px;
+}
+
+.rail-nav a:hover {
+    color: var(--ink);
+    background: var(--blush);
+}
+
+.rail-nav a.active {
+    color: var(--ink);
+    font-weight: 600;
+    background: var(--blush);
+}
+
+.rail-nav .n {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+}
+
+.rail-nav a:hover .n,
+.rail-nav a.active .n {
+    color: var(--rose);
+}
+
+.rail-bottom {
+    padding: 0 36px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #5C8A6B;
+    flex-shrink: 0;
+}
+
+/* Mobile bar + nav (hidden on desktop) */
+
+.mobile-bar {
+    display: none;
+}
+
+.mobile-nav {
+    display: none;
+}
+
+/* ============================================================
+   00 — Hero
+   ============================================================ */
+
+.hero-title {
+    font-size: clamp(48px, 7vw, 84px);
+    font-weight: 800;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+}
+
+.hero-role {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-top: 18px;
+    letter-spacing: 0.01em;
+}
+
+.hero-role .sep {
+    margin: 0 10px;
+    color: var(--rose);
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 56px;
+    margin-top: 56px;
+    align-items: start;
+}
+
+.hero-copy p {
+    max-width: var(--max-text);
+    font-size: 18px;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+}
+
+.hero-copy p:last-child { margin-bottom: 0; }
+
+.accent-word {
+    color: var(--ink);
+    font-weight: 600;
+    background: var(--blush);
+    padding: 0 4px;
+}
+
+.hero-photo {
+    justify-self: end;
+}
+
+.photo-frame {
+    width: 200px;
+    height: 240px;
+    overflow: hidden;
+    border: 1px solid var(--ink);
+    background: var(--blush);
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-caption {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-faint);
+    margin-top: 10px;
+    text-align: right;
+}
+
+/* ============================================================
+   01 — Skills
+   ============================================================ */
+
+.skills-table {
+    border-top: 1px solid var(--rule-strong);
+}
+
+.skills-row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 32px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+}
+
+.skills-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--ink-faint);
+    line-height: 1.5;
+}
+
+.skills-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 28px;
+}
+
+.skills-items span {
+    font-size: 16px;
+    color: var(--ink);
+    position: relative;
+}
+
+.skills-items span:not(:last-child)::after {
+    content: '';
+}
+
+/* ============================================================
+   02 — Experience
+   ============================================================ */
+
+.exp-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.exp-item {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 32px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--rule);
+}
+
+.exp-item:first-child {
+    padding-top: 0;
+    border-top: 1px solid var(--rule-strong);
+}
+
+.exp-date {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.exp-role {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.exp-company {
+    font-size: 14px;
+    color: var(--rose);
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.exp-points {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.exp-points li {
+    font-size: 15px;
+    color: var(--ink-soft);
+    padding-left: 18px;
+    position: relative;
+    max-width: var(--max-text);
+}
+
+.exp-points li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--ink-faint);
+}
+
+/* ============================================================
+   03 — Projects
+   ============================================================ */
+
+.group-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    margin: 0 0 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule-strong);
+}
+
+.project-list {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 48px;
+}
+
+.project-list:last-child { margin-bottom: 0; }
+
+.project-item {
+    padding: 26px 0;
+    border-bottom: 1px solid var(--rule);
+}
+
+.project-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+.project-head h3 {
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.project-link {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-faint);
+    white-space: nowrap;
+    transition: color 0.15s ease;
+    flex-shrink: 0;
+}
+
+.project-link:hover {
+    color: var(--rose);
+}
+
+.project-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--rose);
+    margin-bottom: 10px;
+}
+
+.project-desc {
+    font-size: 15px;
+    color: var(--ink-soft);
+    max-width: var(--max-text);
+}
+
+/* ============================================================
+   04 — Research / Achievements
+   ============================================================ */
+
+.research-group {
+    margin-bottom: 44px;
+}
+
+.research-group:last-child { margin-bottom: 0; }
+
+.research-heading {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding-bottom: 14px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--rule-strong);
+}
+
+.research-entry-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.research-entry-desc {
+    font-size: 15px;
+    color: var(--ink-soft);
+    max-width: var(--max-text);
+}
+
+.research-list li {
+    display: grid;
+    grid-template-columns: 220px 56px 1fr;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+}
+
+.research-list li:last-child {
+    border-bottom: none;
+}
+
+.ra-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.ra-year {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--rose);
+}
+
+.ra-desc {
+    font-size: 14px;
+    color: var(--ink-soft);
+}
+
+/* ============================================================
+   05 — Contact
+   ============================================================ */
+
+.contact-line {
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: var(--max-text);
+    margin-bottom: 44px;
+}
+
+.contact-rows {
+    border-top: 1px solid var(--rule-strong);
+}
+
+.contact-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 4px;
+    border-bottom: 1px solid var(--rule);
+    transition: background-color 0.15s ease, padding-left 0.15s ease;
+}
+
+.contact-row:hover {
+    background: var(--blush);
+    padding-left: 16px;
+}
+
+.contact-label {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.contact-arrow {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    color: var(--ink-faint);
+    transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.contact-row:hover .contact-arrow {
+    color: var(--rose);
+    transform: translate(2px, -2px);
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+
+.site-footer {
+    margin-left: var(--rail-width);
+    max-width: 980px;
+    padding: 28px 64px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-faint);
+}
+
+.back-to-top {
+    color: var(--ink-faint);
+    transition: color 0.15s ease;
+}
+
+.back-to-top:hover {
+    color: var(--rose);
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 900px) {
+    :root {
+        --rail-width: 0px;
+    }
+
+    .rail {
+        display: none;
+    }
+
+    .mobile-bar {
+        display: flex;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--paper);
+        border-bottom: 1px solid var(--rule);
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 24px;
+    }
+
+    .menu-toggle {
+        width: 32px;
+        height: 22px;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .menu-toggle span {
+        display: block;
+        height: 1px;
+        background: var(--ink);
+        width: 100%;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .menu-toggle.is-open span:first-child {
+        transform: translateY(5px) rotate(45deg);
+    }
+
+    .menu-toggle.is-open span:last-child {
+        transform: translateY(-5px) rotate(-45deg);
+    }
+
+    .mobile-nav {
+        display: flex;
+        flex-direction: column;
+        max-height: 0;
+        overflow: hidden;
+        background: var(--paper);
+        border-bottom: 1px solid var(--rule);
+        transition: max-height 0.25s ease;
+    }
+
+    .mobile-nav.is-open {
+        max-height: 360px;
+    }
+
+    .mobile-nav a {
+        padding: 14px 24px;
+        font-size: 15px;
+        border-top: 1px solid var(--rule);
+        display: flex;
+        gap: 12px;
+    }
+
+    .mobile-nav .n {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--rose);
+    }
+
+    main, .site-footer {
+        margin-left: 0;
+        padding-left: 24px;
+        padding-right: 24px;
+        max-width: 100%;
+    }
+
+    .block {
+        padding: 56px 0 52px;
+    }
+
+    .hero-block {
+        padding-top: 48px;
+    }
+
+    .hero-title {
+        font-size: clamp(40px, 12vw, 56px);
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .hero-photo {
+        justify-self: start;
+    }
+
+    .photo-caption {
+        text-align: left;
+    }
+
+    .skills-row,
+    .exp-item,
+    .research-list li {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .research-list li {
+        gap: 4px;
+    }
+
+    .exp-item:first-child {
+        padding-top: 32px;
+    }
+
+    .contact-label {
+        font-size: 18px;
+    }
+
+    .site-footer {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+        padding-top: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .block-title { font-size: 24px; }
+    .hero-copy p { font-size: 16px; }
+}
